@@ -7,6 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class US_205 extends BaseDriver {
+
     String emailStr = "Auser@gmail.com";
     String passwordStr = "Earnq123**";
     String invalidEmailStr = "Ause@gmail.com";

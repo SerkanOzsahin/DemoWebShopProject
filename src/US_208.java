@@ -11,13 +11,13 @@ public class US_208 extends BaseDriver {
 
     @Test
     public void giftCardNegativeTest() {
-        String name="Merve Kaya";
+        String name = "Merve Kaya";
         String email = "kayaamerve01@gmail.com";
         String password = "Team6merve";
         String postalCode = "10001";
         String product = "14.1-inch Laptop";
-        String number="4242 4242 4242 4242";
-        String code="123";
+        String number = "4242 4242 4242 4242";
+        String code = "123";
 
         driver.get("https://demowebshop.tricentis.com/");
         wait.until(ExpectedConditions.urlToBe("https://demowebshop.tricentis.com/"));
@@ -68,7 +68,7 @@ public class US_208 extends BaseDriver {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("product-name")));
         WebElement productInfo = driver.findElement(By.xpath("(//a[text()='14.1-inch Laptop' ])[2]"));
-        Assert.assertTrue("Seçilen ürün ile sepetteki ürün aynı değil!",productInfo.getText().contains(product));
+        Assert.assertTrue("Seçilen ürün ile sepetteki ürün aynı değil!", productInfo.getText().contains(product));
 
         actions.scrollByAmount(0, 300).build().perform();
 
@@ -117,81 +117,81 @@ public class US_208 extends BaseDriver {
         }
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//input[@type='checkbox' ])[2]")));
-        WebElement acceptButton=driver.findElement(By.xpath("(//input[@type='checkbox' ])[2]"));
+        WebElement acceptButton = driver.findElement(By.xpath("(//input[@type='checkbox' ])[2]"));
         wait.until(ExpectedConditions.elementToBeClickable(acceptButton));
         actions.click(acceptButton).build().perform();
         wait.until(ExpectedConditions.elementToBeSelected(acceptButton));
-        System.out.println("Kabul butonu seçilebilir durumda mı?" +acceptButton.isSelected());
+        System.out.println("Kabul butonu seçilebilir durumda mı?" + acceptButton.isSelected());
 
-        WebElement clickCheckout=driver.findElement(By.xpath("//button[@type='submit' ]"));
+        WebElement clickCheckout = driver.findElement(By.xpath("//button[@type='submit' ]"));
         actions.click(clickCheckout).build().perform();
 
-        for (int i = 1; i <=3; i++) {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//input[@value='Continue'])["+i+"]")));
-            WebElement continueClick=driver.findElement(By.xpath("(//input[@value='Continue'])["+i+"]"));
+        for (int i = 1; i <= 3; i++) {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//input[@value='Continue'])[" + i + "]")));
+            WebElement continueClick = driver.findElement(By.xpath("(//input[@value='Continue'])[" + i + "]"));
             wait.until(ExpectedConditions.elementToBeClickable(continueClick));
             actions.click(continueClick).build().perform();
         }
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("paymentmethod_2")));
-        WebElement selectCardRadio=driver.findElement(By.xpath("//input[@id='paymentmethod_2' ]"));
+        WebElement selectCardRadio = driver.findElement(By.xpath("//input[@id='paymentmethod_2' ]"));
         wait.until(ExpectedConditions.elementToBeClickable(selectCardRadio));
         actions.click(selectCardRadio).build().perform();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[onclick='PaymentMethod.save()' ]")));
-        WebElement continueFourth=driver.findElement(By.cssSelector("input[onclick='PaymentMethod.save()' ]"));
+        WebElement continueFourth = driver.findElement(By.cssSelector("input[onclick='PaymentMethod.save()' ]"));
         wait.until(ExpectedConditions.elementToBeClickable(continueFourth));
         continueFourth.click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CreditCardType")));
-        WebElement cardType=driver.findElement(By.xpath("//select[@id='CreditCardType' ]"));
-        Select typeMenu=new Select(cardType);
+        WebElement cardType = driver.findElement(By.xpath("//select[@id='CreditCardType' ]"));
+        Select typeMenu = new Select(cardType);
         wait.until(ExpectedConditions.elementToBeClickable(cardType));
         typeMenu.selectByValue("Visa");
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='CardholderName' ]")));
-        WebElement cardNameBox=driver.findElement(By.xpath("//input[@name='CardholderName' ]"));
+        WebElement cardNameBox = driver.findElement(By.xpath("//input[@name='CardholderName' ]"));
         wait.until(ExpectedConditions.elementToBeClickable(cardNameBox));
         actions.moveToElement(cardNameBox).click().sendKeys(name).build().perform();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CardNumber")));
-        WebElement cardNumberBox=driver.findElement(By.xpath("//input[@id='CardNumber' ]"));
+        WebElement cardNumberBox = driver.findElement(By.xpath("//input[@id='CardNumber' ]"));
         wait.until(ExpectedConditions.elementToBeClickable(cardNumberBox));
         actions.moveToElement(cardNumberBox).click().sendKeys(number).build().perform();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ExpireMonth")));
-        WebElement cardDateMonth=driver.findElement(By.xpath("//select[@id='ExpireMonth' ]"));
-        Select monthMenu=new Select(cardDateMonth);
+        WebElement cardDateMonth = driver.findElement(By.xpath("//select[@id='ExpireMonth' ]"));
+        Select monthMenu = new Select(cardDateMonth);
         monthMenu.selectByValue("1");
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ExpireYear")));
-        WebElement cardDateYear=driver.findElement(By.xpath("//select[@id='ExpireYear' ]"));
-        Select yearMenu=new Select(cardDateYear);
+        WebElement cardDateYear = driver.findElement(By.xpath("//select[@id='ExpireYear' ]"));
+        Select yearMenu = new Select(cardDateYear);
         yearMenu.selectByValue("2032");
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CardCode")));
-        WebElement cardCode=driver.findElement(By.xpath("//input[@name='CardCode' ]"));
+        WebElement cardCode = driver.findElement(By.xpath("//input[@name='CardCode' ]"));
         wait.until(ExpectedConditions.elementToBeClickable(cardCode));
         actions.moveToElement(cardCode).click().sendKeys(code).build().perform();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@onclick='PaymentInfo.save()' ]")));
-        WebElement continueButtonFifth=driver.findElement(By.xpath("//input[@onclick='PaymentInfo.save()' ]"));
+        WebElement continueButtonFifth = driver.findElement(By.xpath("//input[@onclick='PaymentInfo.save()' ]"));
         wait.until(ExpectedConditions.elementToBeClickable(continueButtonFifth));
         actions.click(continueButtonFifth).build().perform();
 
-        actions.scrollByAmount(0,300).build().perform();
+        actions.scrollByAmount(0, 300).build().perform();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@onclick='ConfirmOrder.save()' ]")));
-        WebElement confirmButton=driver.findElement(By.xpath("//input[@onclick='ConfirmOrder.save()' ]"));
+        WebElement confirmButton = driver.findElement(By.xpath("//input[@onclick='ConfirmOrder.save()' ]"));
         wait.until(ExpectedConditions.elementToBeClickable(confirmButton));
         confirmButton.click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class='section order-completed' ])//strong")));
-        WebElement confirmText=driver.findElement(By.xpath("(//div[@class='section order-completed' ])//strong"));
-        Assert.assertTrue("Mesaj görüntülenemedi!",confirmText.getText().contains("successfully processed!"));
+        WebElement confirmText = driver.findElement(By.xpath("(//div[@class='section order-completed' ])//strong"));
+        Assert.assertTrue("Mesaj görüntülenemedi!", confirmText.getText().contains("successfully processed!"));
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='Log out' ]")));
-        WebElement logoutButton=driver.findElement(By.xpath("//a[text()='Log out' ]"));
+        WebElement logoutButton = driver.findElement(By.xpath("//a[text()='Log out' ]"));
         wait.until(ExpectedConditions.elementToBeClickable(logoutButton));
         actions.click(logoutButton).build().perform();
 
